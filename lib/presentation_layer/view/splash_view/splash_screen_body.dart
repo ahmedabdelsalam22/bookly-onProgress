@@ -22,6 +22,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     super.initState();
 
     initSlidingAnimation();
+    navigateToHome();
   }
 
   @override
@@ -29,7 +30,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
     super.dispose();
 
     animationController.dispose();
-    navigateToHome();
   }
 
   @override
