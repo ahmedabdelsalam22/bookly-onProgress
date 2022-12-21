@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/books_list_view.dart';
 import '../../widgets/custom_appbar.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -12,6 +13,7 @@ class HomeViewBody extends StatelessWidget {
       child: Column(
         children: const [
           CustomAppBar(),
+          BooksListView(),
         ],
       ),
     );
