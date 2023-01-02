@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/utilities/assets_paths.dart';
 import '../../../../core/utilities/text_styles.dart';
@@ -62,6 +63,22 @@ class BestSellerListViewItem extends StatelessWidget {
                     "19.09\$",
                     style: AppTextStyles.textStyle20.copyWith(
                         fontFamily: 'pro', fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.1,
+                  ),
+                  Row(
+                    children: const [
+                      Icon(
+                        FontAwesomeIcons.solidStar,
+                        color: Colors.amberAccent,
+                      ),
+                      SizedBox(width: 3),
+                      Text(
+                        '4.9  ${'(2150)'}',
+                        style: AppTextStyles.textStyle16,
+                      ),
+                    ],
                   ),
                 ],
               ),
