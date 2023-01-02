@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/utilities/assets_paths.dart';
-import '../../../core/utilities/text_styles.dart';
+import '../../../../core/utilities/assets_paths.dart';
+import '../../../../core/utilities/text_styles.dart';
 
-class BestSellerListView extends StatelessWidget {
-  const BestSellerListView({Key? key}) : super(key: key);
+class BestSellerListViewItem extends StatelessWidget {
+  const BestSellerListViewItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +31,7 @@ class BestSellerListView extends StatelessWidget {
             width: 30,
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
@@ -41,6 +42,28 @@ class BestSellerListView extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                 ),
+              ),
+              const SizedBox(
+                height: 7,
+              ),
+              Text(
+                'J.K Rowing',
+                style:
+                    AppTextStyles.textStyle14.copyWith(color: Colors.grey[150]),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  Text(
+                    "19.09\$",
+                    style: AppTextStyles.textStyle20.copyWith(
+                        fontFamily: 'pro', fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
             ],
           ),
