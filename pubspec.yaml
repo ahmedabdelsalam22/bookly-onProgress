@@ -82,5 +82,9 @@ flutter:
       fonts:
         - asset: assets/fonts/pro.ttf
 
+    - family: sectra
+      fonts:
+        - asset: assets/fonts/sectra.ttf
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
