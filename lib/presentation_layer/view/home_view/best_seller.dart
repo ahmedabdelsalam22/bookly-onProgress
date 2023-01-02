@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/utilities/assets_paths.dart';
+import '../../../core/utilities/text_styles.dart';
 
 class BestSellerListView extends StatelessWidget {
   const BestSellerListView({Key? key}) : super(key: key);
@@ -25,6 +26,16 @@ class BestSellerListView extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+          Column(
+            children: [
+              Text(
+                'Harry Potter and The GolBet of Fire',
+                style: AppTextStyles.textStyle20.copyWith(fontFamily: 'sectra'),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
+            ],
           ),
         ],
       ),
