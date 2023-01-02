@@ -30,7 +30,7 @@ class BestSellerListView extends StatelessWidget {
           Column(
             children: [
               Text(
-                'Harry Potter and The GolBet of Fire',
+                'Harry Potter \n and The GolBet of Fire',
                 style: AppTextStyles.textStyle20.copyWith(fontFamily: 'sectra'),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
