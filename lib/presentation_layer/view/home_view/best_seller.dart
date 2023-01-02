@@ -27,13 +27,20 @@ class BestSellerListView extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(
+            width: 30,
+          ),
           Column(
             children: [
-              Text(
-                'Harry Potter \n and The GolBet of Fire',
-                style: AppTextStyles.textStyle20.copyWith(fontFamily: 'sectra'),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: Text(
+                  'Harry Potter \n and The Goblet of Fire',
+                  style:
+                      AppTextStyles.textStyle20.copyWith(fontFamily: 'sectra'),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
               ),
             ],
           ),
