@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/router/router.dart';
 import '../../../core/utilities/assets_paths.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -65,10 +66,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(
       const Duration(seconds: 4),
       () {
-        /*     /// TODO NAVIGATEE TO HomeView(),
-            // calculations
-            transition: Transition.fade,
-            duration: const Duration(milliseconds: 250));*/
+        Navigator.pushReplacementNamed(context, Routes.homeViewRoute);
       },
     );
   }

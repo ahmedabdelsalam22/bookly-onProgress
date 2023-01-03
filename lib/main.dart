@@ -1,3 +1,4 @@
+import 'package:bookly/core/router/router.dart';
 import 'package:bookly/presentation_layer/view/splash_view/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,8 @@ class MyApp extends StatelessWidget {
         fontFamily: 'pro',
       ),
       home: const SplashView(),
+      onGenerateRoute: AppRouter.generateRoute,
+      initialRoute: Routes.splashViewRoute,
     );
   }
 }

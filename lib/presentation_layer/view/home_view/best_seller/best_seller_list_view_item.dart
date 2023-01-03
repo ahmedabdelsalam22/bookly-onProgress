@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../core/router/router.dart';
 import '../../../../core/utilities/assets_paths.dart';
 import '../../../../core/utilities/text_styles.dart';
 
@@ -11,7 +12,7 @@ class BestSellerListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        /// todo NAVIGATOE TO BookDetailsView()
+        Navigator.pushNamed(context, Routes.bookDetailsViewRoute);
       },
       child: SizedBox(
         height: 150,
