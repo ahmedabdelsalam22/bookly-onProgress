@@ -12,7 +12,7 @@ class BestSellerListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, Routes.bookDetailsViewRoute);
+        Navigator.pushNamed(context, Routes.kBookDetailsViewRoute);
       },
       child: SizedBox(
         height: 150,

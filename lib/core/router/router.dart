@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import '../../presentation_layer/view/splash_view/splash_screen.dart';
 
 class Routes {
-  static const String splashViewRoute = 'splashView';
-  static const String homeViewRoute = 'homeView';
-  static const String bookDetailsViewRoute = 'bookDetailsView';
+  static const String kSplashViewRoute = 'splashView';
+  static const String kHomeViewRoute = 'homeView';
+  static const String kBookDetailsViewRoute = 'bookDetailsView';
 }
 
 class AppRouter {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.homeViewRoute:
+      case Routes.kHomeViewRoute:
         return MaterialPageRoute(builder: (_) => const HomeView());
 
-      case Routes.bookDetailsViewRoute:
+      case Routes.kBookDetailsViewRoute:
         return MaterialPageRoute(builder: (_) => const BookDetailsView());
 
       default:
