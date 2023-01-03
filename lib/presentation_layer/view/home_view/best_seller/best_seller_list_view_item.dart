@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/utilities/assets_paths.dart';
 import '../../../../core/utilities/text_styles.dart';
-import '../../book_details_view/book_details_view.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({Key? key}) : super(key: key);
@@ -13,7 +11,7 @@ class BestSellerListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(const BookDetailsView());
+        /// todo NAVIGATOE TO BookDetailsView()
       },
       child: SizedBox(
         height: 150,
