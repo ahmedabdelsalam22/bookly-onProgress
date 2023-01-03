@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/router/router.dart';
 import '../../core/utilities/assets_paths.dart';
 
 class CustomBookItem extends StatelessWidget {
@@ -9,7 +10,7 @@ class CustomBookItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        /// TODO NAVIGATE TO BookDetailsView()
+        Navigator.pushNamed(context, Routes.bookDetailsViewRoute);
       },
       child: AspectRatio(
         aspectRatio: 2.7 / 4,
