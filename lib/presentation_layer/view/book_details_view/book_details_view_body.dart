@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/custom_book_item.dart';
+import '../../widgets/custom_book_image.dart';
 import 'custom_boo_details_app_bar.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -20,7 +20,7 @@ class BookDetailsViewBody extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: width * 0.22),
-            child: const CustomBookItem(),
+            child: const CustomBookImage(),
           ),
         ],
       ),
