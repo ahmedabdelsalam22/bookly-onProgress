@@ -8,15 +8,20 @@ class BookDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+
     return Padding(
       padding: const EdgeInsets.all(25.0),
       child: Column(
-        children: const [
-          CustomBookDetailsAppBar(),
-          SizedBox(
+        children: [
+          const CustomBookDetailsAppBar(),
+          const SizedBox(
             height: 10,
           ),
-          CustomBookItem(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width * 0.22),
+            child: const CustomBookItem(),
+          ),
         ],
       ),
     );
