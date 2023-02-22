@@ -17,11 +17,16 @@ class HomeViewBody extends StatelessWidget {
         BooksListView(
           height: MediaQuery.of(context).size.height * .3,
         ),
-        const Padding(
-          padding: EdgeInsets.only(top: 55),
-          child: Text(
-            'Best Seller',
-            style: AppTextStyles.textStyle18,
+        Padding(
+          padding: const EdgeInsets.only(top: 55),
+          child: Row(
+            children: [
+              const Text(
+                'Best Seller',
+                style: AppTextStyles.textStyle18,
+              ),
+              TextButton(onPressed: () {}, child: const Text('See All')),
+            ],
           ),
         ),
         const BestSellerListView(),
