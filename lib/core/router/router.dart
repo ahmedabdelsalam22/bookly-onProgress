@@ -1,8 +1,8 @@
-import 'package:bookly/presentation_layer/view/book_details_view/book_details_view.dart';
-import 'package:bookly/presentation_layer/view/home_view/home_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../presentation_layer/view/splash_view/splash_screen.dart';
+import '../../presentation_layer/screens/book_details_view/book_details_view.dart';
+import '../../presentation_layer/screens/home_view/home_view.dart';
+import '../../presentation_layer/screens/splash_view/splash_screen.dart';
 
 class Routes {
   static const String kSplashViewRoute = 'splashView';
