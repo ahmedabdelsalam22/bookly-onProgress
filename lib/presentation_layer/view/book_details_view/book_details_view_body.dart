@@ -24,7 +24,7 @@ class BookDetailsViewBody extends StatelessWidget {
               height: 10,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: width * 0.22),
+              padding: EdgeInsets.symmetric(horizontal: width * 0.25),
               child: const CustomBookImage(),
             ),
             const SizedBox(
@@ -55,7 +55,7 @@ class BookDetailsViewBody extends StatelessWidget {
             ),
             const BookActionButton(),
             const SizedBox(
-              height: 40,
+              height: 50,
             ),
             Align(
               alignment: AlignmentDirectional.topStart,
@@ -69,7 +69,7 @@ class BookDetailsViewBody extends StatelessWidget {
               height: 18,
             ),
             BooksListView(
-              height: MediaQuery.of(context).size.height * .2,
+              height: MediaQuery.of(context).size.height * .15,
             ),
           ],
         ),
