@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/router/router.dart';
 import '../../../core/utilities/text_styles.dart';
 import '../../widgets/books_list_view.dart';
 import '../../widgets/home_app_bar.dart';
@@ -18,7 +19,7 @@ class HomeViewBody extends StatelessWidget {
           height: MediaQuery.of(context).size.height * .3,
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 55, left: 10, right: 10),
+          padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -27,7 +28,9 @@ class HomeViewBody extends StatelessWidget {
                 style: AppTextStyles.textStyle18,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.kSeeAllViewRoute);
+                },
                 child: Text(
                   'See All',
                   style:
