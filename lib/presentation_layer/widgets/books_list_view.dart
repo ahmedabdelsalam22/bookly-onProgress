@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'custom_book_image.dart';
 
 class BooksListView extends StatelessWidget {
-  const BooksListView({Key? key}) : super(key: key);
+  BooksListView({Key? key, required this.height}) : super(key: key);
 
+  double height;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
