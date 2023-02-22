@@ -18,6 +18,16 @@ class BookActionButton extends StatelessWidget {
                 topLeft: Radius.circular(12), bottomLeft: Radius.circular(12)),
           ),
         ),
+        Expanded(
+          child: CustomButton(
+            text: 'PREVIEW',
+            backgroundColor: Colors.redAccent,
+            textColor: Colors.white,
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(12),
+                bottomRight: Radius.circular(12)),
+          ),
+        ),
       ],
     );
   }
