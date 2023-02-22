@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../core/router/router.dart';
 import '../../../../core/utilities/assets_paths.dart';
 import '../../../../core/utilities/text_styles.dart';
+import '../../../widgets/widget_rating.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({Key? key}) : super(key: key);
@@ -72,19 +72,7 @@ class BestSellerListViewItem extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.1,
                     ),
-                    Row(
-                      children: const [
-                        Icon(
-                          FontAwesomeIcons.solidStar,
-                          color: Colors.amberAccent,
-                        ),
-                        SizedBox(width: 3),
-                        Text(
-                          '4.9  ${'(2150)'}',
-                          style: AppTextStyles.textStyle16,
-                        ),
-                      ],
-                    ),
+                    const BookRating(),
                   ],
                 ),
               ],

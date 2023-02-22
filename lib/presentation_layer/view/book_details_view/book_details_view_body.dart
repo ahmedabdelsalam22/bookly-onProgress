@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/utilities/text_styles.dart';
 import '../../widgets/custom_book_image.dart';
+import '../../widgets/widget_rating.dart';
 import 'custom_boo_details_app_bar.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -42,6 +43,10 @@ class BookDetailsViewBody extends StatelessWidget {
                   fontWeight: FontWeight.w500, fontStyle: FontStyle.italic),
             ),
           ),
+          const SizedBox(
+            height: 6,
+          ),
+          const BookRating(),
         ],
       ),
     );
