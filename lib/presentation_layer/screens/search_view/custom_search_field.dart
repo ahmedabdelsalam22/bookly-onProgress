@@ -11,6 +11,7 @@ class CustomSearchTextField extends StatelessWidget {
         enabledBorder: buildOutlineInputBorder(),
         focusedBorder: buildOutlineInputBorder(),
         hintText: 'Search',
+        hintStyle: const TextStyle(color: Colors.white),
         suffixIcon: IconButton(
           onPressed: () {},
           icon: const Opacity(
