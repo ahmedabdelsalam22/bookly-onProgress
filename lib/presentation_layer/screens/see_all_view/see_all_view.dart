@@ -10,9 +10,9 @@ class SeeAllView extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorConstants.kPrimaryColor,
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'All Books',
-          style: AppTextStyles.textStyle18,
+          style: AppTextStyles.textStyle18.copyWith(color: Colors.white),
         ),
       ),
     );
