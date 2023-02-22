@@ -18,14 +18,22 @@ class HomeViewBody extends StatelessWidget {
           height: MediaQuery.of(context).size.height * .3,
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 55),
+          padding: const EdgeInsets.only(top: 55, left: 10, right: 10),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
                 'Best Seller',
                 style: AppTextStyles.textStyle18,
               ),
-              TextButton(onPressed: () {}, child: const Text('See All')),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  'See All',
+                  style:
+                      AppTextStyles.textStyle18.copyWith(color: Colors.white),
+                ),
+              ),
             ],
           ),
         ),
