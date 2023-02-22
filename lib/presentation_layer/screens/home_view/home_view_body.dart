@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/utilities/text_styles.dart';
 import '../../widgets/books_list_view.dart';
-import '../../widgets/custom_appbar.dart';
+import '../../widgets/home_app_bar.dart';
 import 'best_seller/best_seller.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -13,7 +13,7 @@ class HomeViewBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CustomAppBar(),
+        const HomeAppBar(),
         BooksListView(
           height: MediaQuery.of(context).size.height * .3,
         ),
