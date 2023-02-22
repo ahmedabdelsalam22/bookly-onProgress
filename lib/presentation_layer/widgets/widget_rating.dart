@@ -15,10 +15,18 @@ class BookRating extends StatelessWidget {
           FontAwesomeIcons.solidStar,
           color: Colors.amberAccent,
         ),
-        SizedBox(width: 5),
+        SizedBox(width: 12),
         Text(
-          '4.9  ${'(2150)'}',
+          '4.9',
           style: AppTextStyles.textStyle16,
+        ),
+        SizedBox(width: 5),
+        Opacity(
+          opacity: 0.5,
+          child: Text(
+            '(2960)',
+            style: AppTextStyles.textStyle16,
+          ),
         ),
       ],
     );
