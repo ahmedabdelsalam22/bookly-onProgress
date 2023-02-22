@@ -22,7 +22,7 @@ class HomeAppBar extends StatelessWidget {
             color: ColorConstants.kPrimaryColor,
             child: InkWell(
               onTap: () {
-                Navigator.pushNamed(context, Routes.kSearchViewBodyRoute);
+                Navigator.pushNamed(context, Routes.kSearchViewRoute);
               },
               child: const Icon(
                 Icons.search,
