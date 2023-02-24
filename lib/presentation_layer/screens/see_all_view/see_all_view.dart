@@ -2,7 +2,7 @@ import 'package:bookly/core/utilities/color_constants.dart';
 import 'package:bookly/core/utilities/text_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../home_view/best_seller/list_view_book_item.dart';
+import '../home_view/top_rated/list_view_book_item.dart';
 
 class SeeAllView extends StatelessWidget {
   const SeeAllView({Key? key}) : super(key: key);
