@@ -1,10 +1,10 @@
+import 'package:bookly/presentation_layer/screens/home_view/top_rated/top_rated_list_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/router/router.dart';
 import '../../../core/utilities/text_styles.dart';
 import '../../widgets/books_list_view.dart';
 import '../../widgets/home_app_bar.dart';
-import 'best_seller/best_seller.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class HomeViewBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
-                'Best Seller',
+                'TopRated',
                 style: AppTextStyles.textStyle18,
               ),
               TextButton(
@@ -40,7 +40,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        const BestSellerListView(),
+        const TopRatedListView(),
       ],
     );
   }
