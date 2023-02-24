@@ -1,10 +1,10 @@
-import 'package:dio/dio.dart';
+import 'package:bookly/data/model/movie_model.dart';
 
 import '../core/api_constance.dart';
 import '../core/services/network_services.dart';
 
 abstract class RemoteDataSource {
-  Future<Response<dynamic>> getAllMovies();
+  Future<List<Movie>> getAllMovies();
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -13,11 +13,14 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   RemoteDataSourceImpl(this._networkServices);
 
   @override
-  Future<Response> getAllMovies() async {
+  Future<List<Movie>> getAllMovies() async {
     final response = await _networkServices.get(ApiConstance.getAllMovies);
 
     if (response.statusCode != 200) throw Exception();
 
-    var movies = response.data as List;
+    var result = response.data as List;
+
+    final movie = result.map((e) => Movie.fromJson(e)).toList();
+    return movie;
   }
 }
