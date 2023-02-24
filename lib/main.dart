@@ -4,14 +4,6 @@ import 'package:flutter/material.dart';
 import 'core/utilities/color_constants.dart';
 
 void main() async {
-/*  NetworkServices networkServices = NetworkServicesImpl();
-  RemoteDataSourceImpl remoteDataSourceImpl =
-      RemoteDataSourceImpl(networkServices);
-  MovieRepository movieRepository = MovieRepositoryImpl(remoteDataSourceImpl);
-
-  var movies = await movieRepository.getAllMovies();
-  print(movies.toString());*/
-
   runApp(const MyApp());
 }
 

@@ -1,5 +1,5 @@
-import '../data_source/data_source.dart';
-import '../model/movie_model.dart';
+import '../../data/data_source/data_source.dart';
+import '../../data/model/movie_model.dart';
 
 abstract class MovieRepository {
   Future<List<Movie>> getAllMovies();
