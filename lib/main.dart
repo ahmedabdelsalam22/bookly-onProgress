@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'core/utilities/color_constants.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
