@@ -1,7 +1,7 @@
 import 'package:bookly/data/model/movie_model.dart';
 
-import '../core/api_constance.dart';
-import '../core/services/network_services.dart';
+import '../../core/api_constance.dart';
+import '../../core/services/network_services.dart';
 
 abstract class RemoteDataSource {
   Future<List<Movie>> getAllMovies();

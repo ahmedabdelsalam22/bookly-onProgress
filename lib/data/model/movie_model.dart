@@ -11,40 +11,40 @@ class Movie {
 
   Movie(
       {int? id,
-        String? title,
-        int? year,
-        int? rate,
-        String? description,
-        String? qoute,
-        String? poster,
-        int? genreId,
-        String? genreName}) {
+      String? title,
+      int? year,
+      int? rate,
+      String? description,
+      String? qoute,
+      String? poster,
+      int? genreId,
+      String? genreName}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (title != null) {
-      this._title = title;
+      _title = title;
     }
     if (year != null) {
-      this._year = year;
+      _year = year;
     }
     if (rate != null) {
-      this._rate = rate;
+      _rate = rate;
     }
     if (description != null) {
-      this._description = description;
+      _description = description;
     }
     if (qoute != null) {
-      this._qoute = qoute;
+      _qoute = qoute;
     }
     if (poster != null) {
-      this._poster = poster;
+      _poster = poster;
     }
     if (genreId != null) {
-      this._genreId = genreId;
+      _genreId = genreId;
     }
     if (genreName != null) {
-      this._genreName = genreName;
+      _genreName = genreName;
     }
   }
 
@@ -71,7 +71,7 @@ class Movie {
     _id = json['id'];
     _title = json['title'];
     _year = json['year'];
-    _rate = json['rate'];
+    _rate = json['rate'].toInt();
     _description = json['description'];
     _qoute = json['qoute'];
     _poster = json['poster'];
