@@ -24,15 +24,20 @@ class GenresView extends StatelessWidget {
   }
 
   Widget genresListTile() {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-      child: ListTile(
-        title: Text("Genre Name"),
-        trailing: InkWell(
-          onTap: null,
-          child: Icon(
-            Icons.arrow_forward_ios_rounded,
-            color: Colors.white,
+    return GestureDetector(
+      onTap: () {
+        /// TODO: navigation to books
+      },
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        child: ListTile(
+          title: Text("Genre Name"),
+          trailing: InkWell(
+            onTap: null,
+            child: Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
