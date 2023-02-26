@@ -1,3 +1,4 @@
+import 'package:bookly/presentation_layer/screens/genres_view/genres_view.dart';
 import 'package:bookly/presentation_layer/screens/see_all_view/see_all_view.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class Routes {
   static const String kBookDetailsViewRoute = 'bookDetailsView';
   static const String kSearchViewRoute = 'searchView';
   static const String kSeeAllViewRoute = 'seeAllView';
+  static const String kGenresViewRoute = 'genresView';
 }
 
 class AppRouter {
@@ -30,6 +32,9 @@ class AppRouter {
 
       case Routes.kSeeAllViewRoute:
         return MaterialPageRoute(builder: (_) => const SeeAllView());
+
+      case Routes.kGenresViewRoute:
+        return MaterialPageRoute(builder: (_) => const GenresView());
 
       default:
         return MaterialPageRoute(builder: (_) => const SplashView());
