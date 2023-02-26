@@ -14,6 +14,28 @@ class GenresView extends StatelessWidget {
         centerTitle: true,
         title: const Text("Genres"),
       ),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return genresListTile();
+        },
+        itemCount: 5,
+      ),
+    );
+  }
+
+  Widget genresListTile() {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      child: ListTile(
+        title: Text("Genre Name"),
+        trailing: InkWell(
+          onTap: null,
+          child: Icon(
+            Icons.arrow_forward_ios_rounded,
+            color: Colors.white,
+          ),
+        ),
+      ),
     );
   }
 }
