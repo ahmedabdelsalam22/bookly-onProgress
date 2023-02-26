@@ -1,3 +1,4 @@
+import 'package:bookly/core/router/router.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/utilities/color_constants.dart';
@@ -16,28 +17,25 @@ class GenresView extends StatelessWidget {
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
-          return genresListTile();
+          return genresListTile(context);
         },
         itemCount: 5,
       ),
     );
   }
 
-  Widget genresListTile() {
-    return GestureDetector(
-      onTap: () {
-        /// TODO: navigation to books
-      },
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        child: ListTile(
-          title: Text("Genre Name"),
-          trailing: InkWell(
-            onTap: null,
-            child: Icon(
-              Icons.arrow_forward_ios_rounded,
-              color: Colors.white,
-            ),
+  Widget genresListTile(context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      child: ListTile(
+        title: const Text("Genre Name"),
+        trailing: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, Routes.kBooksByGenreViewRoute);
+          },
+          child: const Icon(
+            Icons.arrow_forward_ios_rounded,
+            color: Colors.white,
           ),
         ),
       ),
