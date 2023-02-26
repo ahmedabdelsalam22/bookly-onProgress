@@ -1,7 +1,4 @@
-import 'package:bookly/presentation_layer/business_logic/cubit/movie_cubit.dart';
-import 'package:bookly/presentation_layer/business_logic/state/MovieState.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'list_view_book_item.dart';
 
@@ -10,23 +7,10 @@ class TopRatedListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<MovieCubit, MovieState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        if (state is GetMoviesLoadingState) {
-          return const Center(child: SingleChildScrollView());
-        }
-
-        if (state is GetMoviesSuccessState) {
-          return topRatedListView(state);
-        }
-
-        return const SizedBox();
-      },
-    );
+    return topRatedListView();
   }
 
-  Widget topRatedListView(GetMoviesSuccessState state) {
+  Widget topRatedListView() {
     return Expanded(
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
@@ -36,7 +20,7 @@ class TopRatedListView extends StatelessWidget {
             child: ListViewBookItem(),
           );
         },
-        itemCount: state.movie.length,
+        itemCount: 3,
       ),
     );
   }

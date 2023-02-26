@@ -4,7 +4,9 @@ import '../../core/router/router.dart';
 import '../../core/utilities/assets_paths.dart';
 
 class CustomBookImage extends StatelessWidget {
-  const CustomBookImage({Key? key}) : super(key: key);
+  const CustomBookImage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +22,7 @@ class CustomBookImage extends StatelessWidget {
             color: Colors.red,
             image: const DecorationImage(
               fit: BoxFit.fill,
-              image: AssetImage(
-                AssetPath.bookImage,
-              ),
+              image: AssetImage(AssetPath.bookImage),
             ),
           ),
         ),
