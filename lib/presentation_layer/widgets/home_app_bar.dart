@@ -20,15 +20,32 @@ class HomeAppBar extends StatelessWidget {
           const Spacer(),
           Material(
             color: ColorConstants.kPrimaryColor,
-            child: InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, Routes.kSearchViewRoute);
-              },
-              child: const Icon(
-                Icons.search,
-                size: 24,
-                color: Colors.white,
-              ),
+            child: Row(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.kSearchViewRoute);
+                  },
+                  child: const Icon(
+                    Icons.search,
+                    size: 24,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.kGenresViewRoute);
+                  },
+                  child: const Icon(
+                    Icons.category_outlined,
+                    size: 24,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
           )
         ],
