@@ -1,15 +1,15 @@
 import 'package:bookly/data/model/book_model.dart';
 
-abstract class MovieState {}
+abstract class BookState {}
 
-class MovieInitial extends MovieState {}
+class BookInitial extends BookState {}
 
-class GetMoviesLoadingState extends MovieState {}
+class GetBooksLoadingState extends BookState {}
 
-class GetMoviesSuccessState extends MovieState {
+class GetBooksSuccessState extends BookState {
   final List<BookModel> book;
 
-  GetMoviesSuccessState(this.book);
+  GetBooksSuccessState(this.book);
 }
 
-class GetMoviesErrorState extends MovieState {}
+class GetBooksErrorState extends BookState {}
