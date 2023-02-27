@@ -14,7 +14,7 @@ class RemoteDataSourceImpl implements RemoteDataSource {
 
   @override
   Future<List<Movie>> getAllMovies() async {
-    final response = await _networkServices.get(ApiConstance.getAllMovies);
+    final response = await _networkServices.get(ApiEndPoints.getAllMovies);
 
     if (response.statusCode != 200) throw Exception();
 
