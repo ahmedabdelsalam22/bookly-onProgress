@@ -59,27 +59,48 @@ class BookModel {
   }
 
   int? get id => _id;
+
   set id(int? id) => _id = id;
+
   String? get title => _title;
+
   set title(String? title) => _title = title;
+
   int? get year => _year;
+
   set year(int? year) => _year = year;
+
   double? get rate => _rate;
+
   set rate(double? rate) => _rate = rate;
+
   int? get price => _price;
+
   set price(int? price) => _price = price;
+
   int? get reviewersNumbers => _reviewersNumbers;
+
   set reviewersNumbers(int? reviewersNumbers) =>
       _reviewersNumbers = reviewersNumbers;
+
   String? get description => _description;
+
   set description(String? description) => _description = description;
+
   String? get quote => _quote;
+
   set quote(String? quote) => _quote = quote;
+
   String? get poster => _poster;
+
   set poster(String? poster) => _poster = poster;
+
   int? get genreId => _genreId;
+
   set genreId(int? genreId) => _genreId = genreId;
+
   String? get genreName => _genreName;
+
   set genreName(String? genreName) => _genreName = genreName;
 
   BookModel.fromJson(Map<String, dynamic> json) {
