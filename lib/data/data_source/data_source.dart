@@ -4,7 +4,7 @@ import '../../core/api_constance.dart';
 import '../../core/services/network_services.dart';
 
 abstract class RemoteDataSource {
-  Future<List<Movie>> getAllMovies();
+  Future<List<Movie>> getAllBooks();
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -13,14 +13,14 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   RemoteDataSourceImpl(this._networkServices);
 
   @override
-  Future<List<Movie>> getAllMovies() async {
-    final response = await _networkServices.get(ApiEndPoints.getAllMovies);
+  Future<List<Movie>> getAllBooks() async {
+    final response = await _networkServices.get(ApiEndPoints.getAllBooks);
 
     if (response.statusCode != 200) throw Exception();
 
     var result = response.data as List;
 
-    final movie = result.map((e) => Movie.fromJson(e)).toList();
-    return movie;
+    final books = result.map((e) => Movie.fromJson(e)).toList();
+    return books;
   }
 }
