@@ -6,7 +6,19 @@ import '../../../../core/utilities/text_styles.dart';
 import '../../../widgets/widget_rating.dart';
 
 class ListViewBookItem extends StatelessWidget {
-  const ListViewBookItem({Key? key}) : super(key: key);
+  const ListViewBookItem(
+      {Key? key,
+      required this.title,
+      required this.description,
+      required this.genreName,
+      required this.price,
+      required this.reviewNumbers,
+      required this.rate})
+      : super(key: key);
+
+  final String title, description, genreName;
+  final int price, reviewNumbers;
+  final double rate;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +54,7 @@ class ListViewBookItem extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Text(
-                    'Harry Potter \n and The Goblet of Fire',
+                    title,
                     style: AppTextStyles.textStyle20
                         .copyWith(fontFamily: 'sectra'),
                     overflow: TextOverflow.ellipsis,
@@ -53,7 +65,7 @@ class ListViewBookItem extends StatelessWidget {
                   height: 7,
                 ),
                 Text(
-                  'J.K Rowing',
+                  genreName,
                   style: AppTextStyles.textStyle14
                       .copyWith(color: Colors.grey[150]),
                   overflow: TextOverflow.ellipsis,
@@ -65,14 +77,17 @@ class ListViewBookItem extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "19.09\$",
+                      "$price\$",
                       style: AppTextStyles.textStyle20.copyWith(
                           fontFamily: 'pro', fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.1,
                     ),
-                    const BookRating(),
+                    BookRating(
+                      rate: rate,
+                      reviewersNumbers: reviewNumbers,
+                    ),
                   ],
                 ),
               ],

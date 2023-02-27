@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/utilities/color_constants.dart';
 import '../../../core/utilities/text_styles.dart';
-import '../home_view/top_rated/list_view_book_item.dart';
 import 'custom_search_field.dart';
 
 class SearchView extends StatelessWidget {
@@ -32,9 +31,9 @@ class SearchView extends StatelessWidget {
               SizedBox(
                 height: 16,
               ),
-              Expanded(
+              /* Expanded(
                 child: SearchResultListView(),
-              ),
+              ),*/
             ],
           ),
         ),
@@ -43,7 +42,7 @@ class SearchView extends StatelessWidget {
   }
 }
 
-class SearchResultListView extends StatelessWidget {
+/*class SearchResultListView extends StatelessWidget {
   const SearchResultListView({super.key});
 
   @override
@@ -52,11 +51,11 @@ class SearchResultListView extends StatelessWidget {
       padding: EdgeInsets.zero,
       itemCount: 10,
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+        return const Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
           child: ListViewBookItem(),
         );
       },
     );
   }
-}
+}*/

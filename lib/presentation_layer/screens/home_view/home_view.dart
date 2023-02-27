@@ -22,39 +22,64 @@ class HomeView extends StatelessWidget {
           builder: (context, state) {
             var cubit = BlocProvider.of<BookCubit>(context);
 
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const HomeAppBar(),
-                BooksListView(
-                  height: MediaQuery.of(context).size.height * .3,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'TopRated',
-                        style: AppTextStyles.textStyle18,
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, Routes.kSeeAllViewRoute);
-                        },
-                        child: Text(
-                          'See All',
-                          style: AppTextStyles.textStyle18
-                              .copyWith(color: Colors.white),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const TopRatedListView(),
-              ],
-            );
+            if (state is GetBooksErrorState) {
+              return const CircularProgressIndicator();
+            }
+            if (state is GetBooksLoadingState) {
+              return const CircularProgressIndicator();
+            }
+            if (state is GetBooksSuccessState) {
+              return HomeViewBody(
+                state: state,
+              );
+            }
+            return const SizedBox();
           },
         ));
+  }
+}
+
+class HomeViewBody extends StatelessWidget {
+  const HomeViewBody({Key? key, required this.state}) : super(key: key);
+
+  final GetBooksSuccessState state;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const HomeAppBar(),
+        BooksListView(
+          height: MediaQuery.of(context).size.height * .3,
+          state: state,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'TopRated',
+                style: AppTextStyles.textStyle18,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.kSeeAllViewRoute);
+                },
+                child: Text(
+                  'See All',
+                  style:
+                      AppTextStyles.textStyle18.copyWith(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        ),
+        TopRatedListView(
+          state: state,
+        ),
+      ],
+    );
   }
 }

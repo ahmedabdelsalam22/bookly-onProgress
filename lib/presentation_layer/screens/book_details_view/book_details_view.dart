@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/utilities/color_constants.dart';
 import '../../../core/utilities/text_styles.dart';
-import '../../widgets/book_action_button.dart';
-import '../../widgets/books_list_view.dart';
-import '../../widgets/custom_book_image.dart';
-import '../../widgets/widget_rating.dart';
 import 'custom_book_details_app_bar.dart';
 
 class BookDetailsView extends StatelessWidget {
@@ -29,7 +25,8 @@ class BookDetailsView extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * 0.25),
-                  child: const CustomBookImage(),
+
+                  /// child: const CustomBookImage(),
                 ),
                 const SizedBox(
                   height: 43,
@@ -54,11 +51,12 @@ class BookDetailsView extends StatelessWidget {
                 const SizedBox(
                   height: 18,
                 ),
-                const BookRating(),
+
+                ///  const BookRating(),
                 const SizedBox(
                   height: 25,
                 ),
-                const BookActionButton(),
+                //  const BookActionButton(),
                 const SizedBox(
                   height: 50,
                 ),
@@ -73,9 +71,9 @@ class BookDetailsView extends StatelessWidget {
                 const SizedBox(
                   height: 18,
                 ),
-                BooksListView(
+                /*BooksListView(
                   height: MediaQuery.of(context).size.height * .15,
-                ),
+                ),*/
               ],
             ),
           ),

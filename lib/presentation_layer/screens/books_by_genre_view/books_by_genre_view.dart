@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/utilities/color_constants.dart';
-import '../home_view/top_rated/list_view_book_item.dart';
 
 class BooksByGenreView extends StatelessWidget {
   const BooksByGenreView({Key? key}) : super(key: key);
@@ -15,7 +14,7 @@ class BooksByGenreView extends StatelessWidget {
         centerTitle: true,
         title: const Text("Books"),
       ),
-      body: ListView.builder(
+      /* body: ListView.builder(
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           return const Padding(
@@ -24,7 +23,7 @@ class BooksByGenreView extends StatelessWidget {
           );
         },
         itemCount: 15,
-      ),
+      ),*/
     );
   }
 }
