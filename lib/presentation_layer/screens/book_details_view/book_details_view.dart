@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/utilities/color_constants.dart';
 import '../../../core/utilities/text_styles.dart';
+import '../../widgets/custom_book_image.dart';
 import 'custom_book_details_app_bar.dart';
 
 class BookDetailsView extends StatelessWidget {
@@ -25,8 +26,9 @@ class BookDetailsView extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * 0.25),
-
-                  /// child: const CustomBookImage(),
+                  child: CustomBookImage(
+                    url: '',
+                  ),
                 ),
                 const SizedBox(
                   height: 43,
@@ -71,7 +73,7 @@ class BookDetailsView extends StatelessWidget {
                 const SizedBox(
                   height: 18,
                 ),
-                /*BooksListView(
+                /*  BooksListView(
                   height: MediaQuery.of(context).size.height * .15,
                 ),*/
               ],
