@@ -7,9 +7,9 @@ class BookInitial extends BookState {}
 class GetBooksLoadingState extends BookState {}
 
 class GetBooksSuccessState extends BookState {
-  final List<BookModel> book;
+  final List<BookModel> bookModel;
 
-  GetBooksSuccessState(this.book);
+  GetBooksSuccessState(this.bookModel);
 }
 
 class GetBooksErrorState extends BookState {}

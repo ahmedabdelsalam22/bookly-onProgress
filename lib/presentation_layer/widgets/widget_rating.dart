@@ -4,28 +4,33 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../core/utilities/text_styles.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({Key? key}) : super(key: key);
+  const BookRating(
+      {Key? key, required this.rate, required this.reviewersNumbers})
+      : super(key: key);
+
+  final double rate;
+  final int reviewersNumbers;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Icon(
+      children: [
+        const Icon(
           FontAwesomeIcons.solidStar,
           size: 16,
           color: Colors.amberAccent,
         ),
-        SizedBox(width: 8),
+        const SizedBox(width: 8),
         Text(
-          '4.9',
+          '$rate',
           style: AppTextStyles.textStyle16,
         ),
-        SizedBox(width: 5),
+        const SizedBox(width: 5),
         Opacity(
           opacity: 0.5,
           child: Text(
-            '(2960)',
+            '($reviewersNumbers)',
             style: AppTextStyles.textStyle16,
           ),
         ),
