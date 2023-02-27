@@ -16,26 +16,19 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: ColorConstants.kPrimaryColor,
-        body: BlocConsumer<BookCubit, BookState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            var cubit = BlocProvider.of<BookCubit>(context);
-
-            if (state is GetBooksErrorState) {
-              return const CircularProgressIndicator();
-            }
-            if (state is GetBooksLoadingState) {
-              return const CircularProgressIndicator();
-            }
-            if (state is GetBooksSuccessState) {
-              return HomeViewBody(
-                state: state,
-              );
-            }
-            return const SizedBox();
-          },
-        ));
+      backgroundColor: ColorConstants.kPrimaryColor,
+      body: BlocConsumer<BookCubit, BookState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          if (state is GetBooksSuccessState) {
+            return HomeViewBody(
+              state: state,
+            );
+          }
+          return const SizedBox();
+        },
+      ),
+    );
   }
 }
 
@@ -50,6 +43,16 @@ class HomeViewBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const HomeAppBar(),
+        if (state is GetBooksLoadingState)
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .3,
+            child: const CircularProgressIndicator(),
+          ),
+        if (state is GetBooksErrorState)
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .3,
+            child: const Text("No Data Found"),
+          ),
         BooksListView(
           height: MediaQuery.of(context).size.height * .3,
           state: state,
@@ -76,6 +79,16 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
+        if (state is GetBooksLoadingState)
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .3,
+            child: const CircularProgressIndicator(),
+          ),
+        if (state is GetBooksErrorState)
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .3,
+            child: const Text("No Data Found"),
+          ),
         TopRatedListView(
           state: state,
         ),
