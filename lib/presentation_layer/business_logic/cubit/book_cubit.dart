@@ -10,7 +10,7 @@ class BookCubit extends Cubit<BookState> {
 
   static BookCubit get(context) => BlocProvider.of(context);
 
-  void getAllBooks() {
+  void loadBooks() {
     emit(GetBooksLoadingState());
     _bookRepository.getAllBooks().then((value) async {
       final books = await _bookRepository.getAllBooks();
