@@ -1,8 +1,8 @@
 import '../../data/data_source/data_source.dart';
-import '../../data/model/movie_model.dart';
+import '../../data/model/book_model.dart';
 
 abstract class BookRepository {
-  Future<List<Movie>> getAllBooks();
+  Future<List<BookModel>> getAllBooks();
 }
 
 class BookRepositoryImpl implements BookRepository {
@@ -11,7 +11,7 @@ class BookRepositoryImpl implements BookRepository {
   BookRepositoryImpl(this._remoteDataSourceImpl);
 
   @override
-  Future<List<Movie>> getAllBooks() async {
+  Future<List<BookModel>> getAllBooks() async {
     return await _remoteDataSourceImpl.getAllBooks();
   }
 }
