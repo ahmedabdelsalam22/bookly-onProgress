@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'custom_book_image.dart';
 
 class BooksListView extends StatelessWidget {
-  BooksListView({Key? key, required this.height}) : super(key: key);
+  const BooksListView({Key? key, required this.height}) : super(key: key);
 
-  double height;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +18,8 @@ class BooksListView extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
+          return const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 5),
             child: CustomBookImage(),
           );
         },
