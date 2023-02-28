@@ -25,35 +25,26 @@ class SeeAllView extends StatelessWidget {
       body: BlocConsumer<BookCubit, BookState>(
         listener: (context, state) {},
         builder: (context, state) {
-          if (state is GetBooksLoadingState) {
-            return const Center(
-              child: CircularProgressIndicator(
-                color: Colors.white,
-              ),
-            );
-          }
-          if (state is GetBooksSuccessState) {
-            return ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                var book = state.bookModel[index];
-                return Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                  child: ListViewBookItem(
-                    title: '${book.title}',
-                    description: '${book.description}',
-                    genreName: '${book.genreName}',
-                    price: book.price!.toInt(),
-                    reviewNumbers: book.reviewersNumbers!.toInt(),
-                    rate: book.rate!.toDouble(),
-                  ),
-                );
-              },
-              itemCount: state.bookModel.length,
-            );
-          }
-          return const SizedBox();
+          var cubit = BookCubit.get(context);
+          return ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) {
+              var book = cubit.bookModel![index];
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                child: ListViewBookItem(
+                  title: '${book.title}',
+                  description: '${book.description}',
+                  genreName: '${book.genreName}',
+                  price: book.price!.toInt(),
+                  reviewNumbers: book.reviewersNumbers!.toInt(),
+                  rate: book.rate!.toDouble(),
+                ),
+              );
+            },
+            itemCount: cubit.bookModel!.length,
+          );
         },
       ),
     );

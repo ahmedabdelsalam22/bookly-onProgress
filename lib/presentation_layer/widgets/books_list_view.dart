@@ -1,14 +1,14 @@
-import 'package:bookly/presentation_layer/business_logic/state/MovieState.dart';
+import 'package:bookly/presentation_layer/business_logic/cubit/book_cubit.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_book_image.dart';
 
 class BooksListView extends StatelessWidget {
-  const BooksListView({Key? key, required this.height, required this.state})
+  const BooksListView({Key? key, required this.height, required this.cubit})
       : super(key: key);
 
   final double height;
-  final GetBooksSuccessState state;
+  final BookCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -17,16 +17,16 @@ class BooksListView extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          var bookModel = state.bookModel[index];
+          var model = cubit.bookModel![index];
 
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: CustomBookImage(
-              url: '${bookModel.poster}',
+              url: '${model.poster}',
             ),
           );
         },
-        itemCount: state.bookModel.length,
+        itemCount: cubit.bookModel!.length,
       ),
     );
   }

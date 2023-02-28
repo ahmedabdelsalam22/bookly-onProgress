@@ -17,66 +17,57 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstants.kPrimaryColor,
-      body: const HomeViewBody(),
-    );
-  }
-}
-
-class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const HomeAppBar(),
-        BlocBuilder<BookCubit, BookState>(
-          builder: (context, state) {
-            if (state is GetBooksSuccessState) {
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const HomeAppBar(),
+          BlocConsumer<BookCubit, BookState>(
+            listener: (context, state) {
+              // TODO: implement listener
+            },
+            builder: (context, state) {
+              var cubit = BookCubit.get(context);
               return BooksListView(
                 height: MediaQuery.of(context).size.height * .3,
-                state: state,
+                cubit: cubit,
               );
-            }
-            return const SizedBox();
-          },
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'TopRated',
-                style: AppTextStyles.textStyle18,
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, Routes.kSeeAllViewRoute);
-                },
-                child: Text(
-                  'See All',
-                  style:
-                      AppTextStyles.textStyle18.copyWith(color: Colors.white),
-                ),
-              ),
-            ],
+            },
           ),
-        ),
-        BlocBuilder<BookCubit, BookState>(
-          builder: (context, state) {
-            var cubit = BookCubit.get(context);
-            return Expanded(
-              child: TopRatedListView(
+          Padding(
+            padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'TopRated',
+                  style: AppTextStyles.textStyle18,
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.kSeeAllViewRoute);
+                  },
+                  child: Text(
+                    'See All',
+                    style:
+                        AppTextStyles.textStyle18.copyWith(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          BlocConsumer<BookCubit, BookState>(
+            listener: (context, state) {
+              // TODO: implement listener
+            },
+            builder: (context, state) {
+              var cubit = BookCubit.get(context);
+              return TopRatedListView(
                 topRatedModel: cubit.topRatedModel,
-              ),
-            );
-          },
-        ),
-      ],
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }
