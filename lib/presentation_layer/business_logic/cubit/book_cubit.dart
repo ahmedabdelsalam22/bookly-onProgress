@@ -1,16 +1,19 @@
 import 'package:bookly/domain/repository/book_repository.dart';
 import 'package:bookly/domain/repository/genres_repository.dart';
+import 'package:bookly/domain/repository/searchRepository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../state/MovieState.dart';
 
 class BookCubit extends Cubit<BookState> {
-  BookCubit(this._bookRepository, this._genresRepository)
+  BookCubit(
+      this._bookRepository, this._genresRepository, this._searchRepository)
       : super(BookInitial());
 
   final BookRepository _bookRepository;
   final GenresRepository _genresRepository;
+  final SearchRepository _searchRepository;
 
   static BookCubit get(context) => BlocProvider.of(context);
 
@@ -33,6 +36,17 @@ class BookCubit extends Cubit<BookState> {
     }).catchError((onError) {
       emit(GetGenresErrorState());
       debugPrint("Genres not loaded $onError");
+    });
+  }
+
+  void searchInBooks(String text) {
+    emit(GetSearchLoadingState());
+    _searchRepository.searchInBooks(text).then((value) {
+      emit(GetSearchSuccessState(value));
+      debugPrint("Searched Text Found");
+    }).catchError((onError) {
+      emit(GetSearchErrorState());
+      debugPrint("Searched Text Not Found $onError");
     });
   }
 }
