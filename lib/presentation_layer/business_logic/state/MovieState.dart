@@ -25,3 +25,9 @@ class GetSearchLoadingState extends BookState {}
 class GetSearchSuccessState extends BookState {}
 
 class GetSearchErrorState extends BookState {}
+
+class GetTopRatedLoadingState extends BookState {}
+
+class GetTopRatedSuccessState extends BookState {}
+
+class GetTopRatedErrorState extends BookState {}
