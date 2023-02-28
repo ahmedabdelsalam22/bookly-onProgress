@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/utilities/color_constants.dart';
 import '../../../core/utilities/text_styles.dart';
+import '../../business_logic/cubit/book_cubit.dart';
+import '../../business_logic/state/MovieState.dart';
+import '../home_view/top_rated/list_view_book_item.dart';
 import 'custom_search_field.dart';
 
 class SearchView extends StatelessWidget {
@@ -13,49 +17,76 @@ class SearchView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: ColorConstants.kPrimaryColor,
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              SizedBox(
-                height: 50,
-              ),
-              CustomSearchTextField(),
-              SizedBox(
-                height: 16,
-              ),
-              Text(
-                'Search Result',
-                style: AppTextStyles.textStyle18,
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              /* Expanded(
-                child: SearchResultListView(),
-              ),*/
-            ],
-          ),
-        ),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: BlocConsumer<BookCubit, BookState>(
+              listener: (context, state) {
+                // TODO: implement listener
+              },
+              builder: (context, state) {
+                var cubit = BookCubit.get(context);
+                debugPrint(state.toString());
+
+                if (state is GetSearchSuccessState) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      CustomSearchTextField(
+                        cubit: cubit,
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      const Text(
+                        'Search Result',
+                        style: AppTextStyles.textStyle18,
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Expanded(
+                        child: SearchResultListView(
+                          state: state,
+                        ),
+                      ),
+                    ],
+                  );
+                }
+                return SizedBox();
+              },
+            )),
       ),
     );
   }
 }
 
-/*class SearchResultListView extends StatelessWidget {
-  const SearchResultListView({super.key});
+class SearchResultListView extends StatelessWidget {
+  const SearchResultListView({super.key, required this.state});
+
+  final GetSearchSuccessState state;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       padding: EdgeInsets.zero,
-      itemCount: 10,
+      itemCount: state.searchModel.length,
       itemBuilder: (context, index) {
-        return const Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: ListViewBookItem(),
+        var model = state.searchModel[index];
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: ListViewBookItem(
+            title: '${model.title}',
+            description: '${model.description}',
+            genreName: '${model.genreName}',
+            price: model.price!.toInt(),
+            reviewNumbers: model.reviewersNumbers!.toInt(),
+            rate: model.rate!.toDouble(),
+          ),
         );
       },
     );
   }
-}*/
+}
