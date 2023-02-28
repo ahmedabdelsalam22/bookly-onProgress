@@ -19,7 +19,20 @@ class GenresView extends StatelessWidget {
         title: const Text("Genres"),
       ),
       body: BlocConsumer<BookCubit, BookState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is GetGenresLoadingState) {
+            const Center(
+              child: CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            );
+          }
+          if (state is GetSearchErrorState) {
+            const Center(
+              child: Text("No Data Found!"),
+            );
+          }
+        },
         builder: (context, state) {
           var cubit = BookCubit.get(context);
           debugPrint("$state");

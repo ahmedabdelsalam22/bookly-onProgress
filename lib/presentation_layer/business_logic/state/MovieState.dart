@@ -1,4 +1,4 @@
-import 'package:bookly/data/model/book_mchModel.dart';
+import '../../../data/model/book_model.dart';
 
 abstract class BookState {}
 

@@ -18,7 +18,20 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorConstants.kPrimaryColor,
       body: BlocConsumer<BookCubit, BookState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is GetBooksLoadingState) {
+            const Center(
+              child: CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            );
+          }
+          if (state is GetBooksErrorState) {
+            const Center(
+              child: Text("No Data Found!"),
+            );
+          }
+        },
         builder: (context, state) {
           if (state is GetBooksSuccessState) {
             return HomeViewBody(

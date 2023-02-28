@@ -17,8 +17,11 @@ class SearchView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorConstants.kPrimaryColor,
+        appBar: AppBar(
+          backgroundColor: ColorConstants.kPrimaryColor,
+        ),
         body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             child: BlocConsumer<BookCubit, BookState>(
               listener: (context, state) {
                 // TODO: implement listener
@@ -44,11 +47,12 @@ class SearchView extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    Expanded(
-                      child: SearchResultListView(
-                        searchModel: cubit.searchModel,
+                    if (state is GetSearchSuccessState)
+                      Expanded(
+                        child: SearchResultListView(
+                          searchModel: cubit.searchModel,
+                        ),
                       ),
-                    ),
                   ],
                 );
               },
