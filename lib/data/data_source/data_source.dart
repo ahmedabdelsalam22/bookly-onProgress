@@ -7,6 +7,7 @@ import '../../core/services/network_services.dart';
 abstract class RemoteDataSource {
   Future<List<BookModel>> getAllBooks();
   Future<List<GenreModel>> getAllGenres();
+  Future<List<BookModel>> searchInBooks(String text);
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -36,5 +37,18 @@ class RemoteDataSourceImpl implements RemoteDataSource {
 
     final genres = result.map((e) => GenreModel.fromJson(e)).toList();
     return genres;
+  }
+
+  @override
+  Future<List<BookModel>> searchInBooks(String text) async {
+    final response =
+        await _networkServices.get(ApiEndPoints.searchInBooks(text));
+
+    if (response.statusCode != 200) throw Exception();
+
+    var result = response.data as List;
+
+    final books = result.map((e) => BookModel.fromJson(e)).toList();
+    return books;
   }
 }
