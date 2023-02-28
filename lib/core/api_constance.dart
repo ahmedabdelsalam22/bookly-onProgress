@@ -3,7 +3,7 @@ class ApiEndPoints {
   static String getAllBooks = "${baseUrl}books/getAllBooks";
   static String getAllGenres = "${baseUrl}genres/getAllGenres";
 
-  static String getTopRated = "$getAllBooks/getTopRated";
+  static String getTopRated = "${baseUrl}books/getTopRated";
 
   static String searchInBooks(String searchText) => "$getAllBooks/$searchText";
 }

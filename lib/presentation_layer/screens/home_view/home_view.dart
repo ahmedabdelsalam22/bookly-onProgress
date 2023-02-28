@@ -17,38 +17,15 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstants.kPrimaryColor,
-      body: BlocConsumer<BookCubit, BookState>(
-        listener: (context, state) {
-          if (state is GetBooksLoadingState) {
-            const Center(
-              child: CircularProgressIndicator(
-                color: Colors.white,
-              ),
-            );
-          }
-          if (state is GetBooksErrorState) {
-            const Center(
-              child: Text("No Data Found!"),
-            );
-          }
-        },
-        builder: (context, state) {
-          if (state is GetBooksSuccessState) {
-            return HomeViewBody(
-              state: state,
-            );
-          }
-          return const SizedBox();
-        },
-      ),
+      body: const HomeViewBody(),
     );
   }
 }
 
 class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({Key? key, required this.state}) : super(key: key);
-
-  final GetBooksSuccessState state;
+  const HomeViewBody({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,19 +33,16 @@ class HomeViewBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const HomeAppBar(),
-        if (state is GetBooksLoadingState)
-          SizedBox(
-            height: MediaQuery.of(context).size.height * .3,
-            child: const CircularProgressIndicator(),
-          ),
-        if (state is GetBooksErrorState)
-          SizedBox(
-            height: MediaQuery.of(context).size.height * .3,
-            child: const Text("No Data Found"),
-          ),
-        BooksListView(
-          height: MediaQuery.of(context).size.height * .3,
-          state: state,
+        BlocBuilder<BookCubit, BookState>(
+          builder: (context, state) {
+            if (state is GetBooksSuccessState) {
+              return BooksListView(
+                height: MediaQuery.of(context).size.height * .3,
+                state: state,
+              );
+            }
+            return const SizedBox();
+          },
         ),
         Padding(
           padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
@@ -92,18 +66,15 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        if (state is GetBooksLoadingState)
-          SizedBox(
-            height: MediaQuery.of(context).size.height * .3,
-            child: const CircularProgressIndicator(),
-          ),
-        if (state is GetBooksErrorState)
-          SizedBox(
-            height: MediaQuery.of(context).size.height * .3,
-            child: const Text("No Data Found"),
-          ),
-        TopRatedListView(
-          state: state,
+        BlocBuilder<BookCubit, BookState>(
+          builder: (context, state) {
+            var cubit = BookCubit.get(context);
+            return Expanded(
+              child: TopRatedListView(
+                topRatedModel: cubit.topRatedModel,
+              ),
+            );
+          },
         ),
       ],
     );

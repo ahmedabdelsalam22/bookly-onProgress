@@ -1,12 +1,13 @@
-import 'package:bookly/presentation_layer/business_logic/state/MovieState.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../data/model/top_rated_model.dart';
 import 'list_view_book_item.dart';
 
 class TopRatedListView extends StatelessWidget {
-  const TopRatedListView({Key? key, required this.state}) : super(key: key);
+  const TopRatedListView({Key? key, required this.topRatedModel})
+      : super(key: key);
 
-  final GetBooksSuccessState state;
+  final List<TopRatedModel>? topRatedModel;
 
   @override
   Widget build(BuildContext context) {
@@ -14,21 +15,21 @@ class TopRatedListView extends StatelessWidget {
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
-          var bookModel = state.bookModel[index];
+          var model = topRatedModel![index];
 
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: ListViewBookItem(
-              title: '${bookModel.title}',
-              description: '${bookModel.description}',
-              genreName: '${bookModel.genreName}',
-              price: bookModel.price!.toInt(),
-              reviewNumbers: bookModel.reviewersNumbers!.toInt(),
-              rate: bookModel.rate!.toDouble(),
+              title: '${model.title}',
+              description: '${model.description}',
+              genreName: '${model.genreName}',
+              price: model.price!.toInt(),
+              reviewNumbers: model.reviewersNumbers!.toInt(),
+              rate: model.rate!.toDouble(),
             ),
           );
         },
-        itemCount: state.bookModel.length,
+        itemCount: topRatedModel!.length,
       ),
     );
   }
