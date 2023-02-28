@@ -7,6 +7,7 @@ import 'package:bookly/domain/repository/top_rated_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../data/model/book_model.dart';
 import '../../../data/model/searchModel.dart';
 import '../state/MovieState.dart';
 
@@ -22,10 +23,13 @@ class BookCubit extends Cubit<BookState> {
 
   static BookCubit get(context) => BlocProvider.of(context);
 
+  List<BookModel>? bookModel;
+
   void loadBooks() {
     emit(GetBooksLoadingState());
     _bookRepository.getAllBooks().then((value) {
-      emit(GetBooksSuccessState(value));
+      emit(GetBooksSuccessState());
+      bookModel = value;
       debugPrint("Books loaded");
     }).catchError((onError) {
       emit(GetBooksErrorState());
@@ -61,7 +65,7 @@ class BookCubit extends Cubit<BookState> {
     });
   }
 
-  List<TopRatedModel>? topRatedModel;
+  List<TopRatedModel>? topRatedModel = [];
 
   void loadTopRated() {
     emit(GetTopRatedLoadingState());

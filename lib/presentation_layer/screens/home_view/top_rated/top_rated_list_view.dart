@@ -13,12 +13,13 @@ class TopRatedListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
+        shrinkWrap: true,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           var model = topRatedModel![index];
 
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             child: ListViewBookItem(
               title: '${model.title}',
               description: '${model.description}',
