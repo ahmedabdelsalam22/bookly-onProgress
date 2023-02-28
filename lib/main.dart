@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/router/router.dart';
 import 'core/services/network_services.dart';
 import 'core/utilities/color_constants.dart';
-import 'data/data_source/data_source.dart';
+import 'data/data_source/remote_data_source.dart';
 import 'domain/repository/book_repository.dart';
 
 void main() {

@@ -31,6 +31,7 @@ class BookCubit extends Cubit<BookState> {
   }
 
   List<GenreModel>? genreModel;
+
   void loadGenres() {
     emit(GetGenresLoadingState());
     _genresRepository.getAllGenres().then((value) {
@@ -44,6 +45,7 @@ class BookCubit extends Cubit<BookState> {
   }
 
   List<SearchModel>? searchModel = [];
+
   void searchInBooks(String text) {
     emit(GetSearchLoadingState());
     _searchRepository.searchInBooks(text).then((value) {

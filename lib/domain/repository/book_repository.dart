@@ -1,4 +1,4 @@
-import '../../data/data_source/data_source.dart';
+import '../../data/data_source/remote_data_source.dart';
 import '../../data/model/book_model.dart';
 
 abstract class BookRepository {
