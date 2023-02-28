@@ -1,5 +1,6 @@
 import 'package:bookly/domain/repository/book_repository.dart';
 import 'package:bookly/domain/repository/genres_repository.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../state/MovieState.dart';
@@ -17,8 +18,10 @@ class BookCubit extends Cubit<BookState> {
     emit(GetBooksLoadingState());
     _bookRepository.getAllBooks().then((value) {
       emit(GetBooksSuccessState(value));
+      debugPrint("Books loaded");
     }).catchError((onError) {
       emit(GetBooksErrorState());
+      debugPrint("Books not loaded $onError");
     });
   }
 
@@ -26,8 +29,10 @@ class BookCubit extends Cubit<BookState> {
     emit(GetGenresLoadingState());
     _genresRepository.getAllGenres().then((value) {
       emit(GetGenresSuccessState(value));
+      debugPrint("Genres loaded");
     }).catchError((onError) {
       emit(GetGenresErrorState());
+      debugPrint("Genres not loaded $onError");
     });
   }
 }
