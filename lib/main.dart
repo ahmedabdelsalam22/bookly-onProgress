@@ -1,3 +1,4 @@
+import 'package:bookly/domain/repository/books_by_genre_repository.dart';
 import 'package:bookly/domain/repository/genres_repository.dart';
 import 'package:bookly/domain/repository/searchRepository.dart';
 import 'package:bookly/domain/repository/top_rated_repository.dart';
@@ -22,6 +23,8 @@ BookRepository _bookRepository = BookRepositoryImpl(_remoteDataSource);
 SearchRepository _searchRepository = SearchRepositoryImpl(_remoteDataSource);
 TopRatedRepository _topRatedRepository =
     TopRatedRepositoryImpl(_remoteDataSource);
+BooksByGenreRepository _booksByGenreRepository =
+    BooksByGenreRepositoryImpl(_remoteDataSource);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -30,7 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => BookCubit(_bookRepository, _genresRepository,
-          _searchRepository, _topRatedRepository)
+          _searchRepository, _topRatedRepository, _booksByGenreRepository)
         ..loadBooks()
         ..loadGenres()
         ..loadTopRated(),

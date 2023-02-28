@@ -25,3 +25,9 @@ class GetTopRatedLoadingState extends BookState {}
 class GetTopRatedSuccessState extends BookState {}
 
 class GetTopRatedErrorState extends BookState {}
+
+class BooksByGenreLoadingState extends BookState {}
+
+class BooksByGenreSuccessState extends BookState {}
+
+class BooksByGenreErrorState extends BookState {}
