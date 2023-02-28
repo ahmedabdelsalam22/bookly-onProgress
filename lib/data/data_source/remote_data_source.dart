@@ -1,5 +1,6 @@
 import 'package:bookly/data/model/book_model.dart';
 import 'package:bookly/data/model/genre_model.dart';
+import 'package:bookly/data/model/top_rated_model.dart';
 
 import '../../core/api_constance.dart';
 import '../../core/services/network_services.dart';
@@ -7,8 +8,12 @@ import '../model/searchModel.dart';
 
 abstract class RemoteDataSource {
   Future<List<BookModel>> getAllBooks();
+
   Future<List<GenreModel>> getAllGenres();
+
   Future<List<SearchModel>> searchInBooks(String text);
+
+  Future<List<TopRatedModel>> getTopRated();
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -50,6 +55,17 @@ class RemoteDataSourceImpl implements RemoteDataSource {
     var result = response.data as List;
 
     final books = result.map((e) => SearchModel.fromJson(e)).toList();
+    return books;
+  }
+
+  @override
+  Future<List<TopRatedModel>> getTopRated() async {
+    final response = await _networkServices.get(ApiEndPoints.getTopRated);
+
+    if (response.statusCode != 200) throw Exception();
+
+    var result = response.data as List;
+    final books = result.map((e) => TopRatedModel.fromJson(e)).toList();
     return books;
   }
 }

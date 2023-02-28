@@ -7,6 +7,7 @@ class CustomSearchTextField extends StatelessWidget {
   const CustomSearchTextField({super.key, required this.cubit});
 
   final BookCubit cubit;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(

@@ -1,4 +1,4 @@
-import 'package:bookly/data/data_source/data_source.dart';
+import 'package:bookly/data/data_source/remote_data_source.dart';
 import 'package:bookly/data/model/genre_model.dart';
 
 abstract class GenresRepository {
