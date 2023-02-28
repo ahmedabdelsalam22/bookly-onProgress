@@ -6,12 +6,12 @@ abstract class BookRepository {
 }
 
 class BookRepositoryImpl implements BookRepository {
-  final RemoteDataSourceImpl _remoteDataSourceImpl;
+  final RemoteDataSource _remoteDataSource;
 
-  BookRepositoryImpl(this._remoteDataSourceImpl);
+  BookRepositoryImpl(this._remoteDataSource);
 
   @override
   Future<List<BookModel>> getAllBooks() async {
-    return await _remoteDataSourceImpl.getAllBooks();
+    return await _remoteDataSource.getAllBooks();
   }
 }

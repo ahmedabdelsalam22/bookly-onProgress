@@ -1,3 +1,4 @@
+import 'package:bookly/domain/repository/genres_repository.dart';
 import 'package:bookly/presentation_layer/business_logic/cubit/book_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,11 +7,16 @@ import 'core/router/router.dart';
 import 'core/services/network_services.dart';
 import 'core/utilities/color_constants.dart';
 import 'data/data_source/data_source.dart';
-import 'domain/repository/movie_repository.dart';
+import 'domain/repository/book_repository.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+NetworkServices _networkServices = NetworkServicesImpl();
+RemoteDataSource remoteDataSource = RemoteDataSourceImpl(_networkServices);
+GenresRepository genresRepository = GenresRepositoryImpl(remoteDataSource);
+BookRepository bookRepository = BookRepositoryImpl(remoteDataSource);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,10 +24,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => BookCubit(BookRepositoryImpl(
-        RemoteDataSourceImpl(NetworkServicesImpl()),
-      ))
-        ..loadBooks(),
+      create: (context) => BookCubit(bookRepository, genresRepository)
+        ..loadBooks()
+        ..loadGenres(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
