@@ -4,5 +4,5 @@ class ApiEndPoints {
   static String getAllGenres = "${baseUrl}genres/getAllGenres";
   //static String getTopRated = "$getAllBooks/getTopRated";
 
-  // static String searchInBooks(String searchText) => "$getAllBooks/$searchText";
+  static String searchInBooks(String searchText) => "$getAllBooks/$searchText";
 }
