@@ -34,7 +34,7 @@ class BookCubit extends Cubit<BookState> {
   void loadGenres() {
     emit(GetGenresLoadingState());
     _genresRepository.getAllGenres().then((value) {
-      emit(GetGenresSuccessState(value));
+      emit(GetGenresSuccessState());
       genreModel = value;
       debugPrint("Genres loaded");
     }).catchError((onError) {
@@ -47,7 +47,8 @@ class BookCubit extends Cubit<BookState> {
   void searchInBooks(String text) {
     emit(GetSearchLoadingState());
     _searchRepository.searchInBooks(text).then((value) {
-      emit(GetSearchSuccessState(value));
+      emit(GetSearchSuccessState());
+      searchModel = value;
       debugPrint("Searched Text Found");
     }).catchError((onError) {
       emit(GetSearchErrorState());

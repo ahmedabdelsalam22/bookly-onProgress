@@ -1,3 +1,4 @@
+import 'package:bookly/data/model/searchModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,37 +25,32 @@ class SearchView extends StatelessWidget {
               },
               builder: (context, state) {
                 var cubit = BookCubit.get(context);
-                debugPrint(state.toString());
-
-                if (state is GetSearchSuccessState) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 50,
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    CustomSearchTextField(
+                      cubit: cubit,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    const Text(
+                      'Search Result',
+                      style: AppTextStyles.textStyle18,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Expanded(
+                      child: SearchResultListView(
+                        searchModel: cubit.searchModel,
                       ),
-                      CustomSearchTextField(
-                        cubit: cubit,
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      const Text(
-                        'Search Result',
-                        style: AppTextStyles.textStyle18,
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Expanded(
-                        child: SearchResultListView(
-                          state: state,
-                        ),
-                      ),
-                    ],
-                  );
-                }
-                return SizedBox();
+                    ),
+                  ],
+                );
               },
             )),
       ),
@@ -63,17 +59,17 @@ class SearchView extends StatelessWidget {
 }
 
 class SearchResultListView extends StatelessWidget {
-  const SearchResultListView({super.key, required this.state});
+  const SearchResultListView({super.key, required this.searchModel});
 
-  final GetSearchSuccessState state;
+  final List<SearchModel>? searchModel;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       padding: EdgeInsets.zero,
-      itemCount: state.searchModel.length,
+      itemCount: searchModel!.length,
       itemBuilder: (context, index) {
-        var model = state.searchModel[index];
+        var model = searchModel![index];
 
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
