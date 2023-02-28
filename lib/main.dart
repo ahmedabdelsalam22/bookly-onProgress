@@ -1,5 +1,6 @@
 import 'package:bookly/domain/repository/genres_repository.dart';
 import 'package:bookly/domain/repository/searchRepository.dart';
+import 'package:bookly/domain/repository/top_rated_repository.dart';
 import 'package:bookly/presentation_layer/business_logic/cubit/book_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +20,8 @@ RemoteDataSource _remoteDataSource = RemoteDataSourceImpl(_networkServices);
 GenresRepository _genresRepository = GenresRepositoryImpl(_remoteDataSource);
 BookRepository _bookRepository = BookRepositoryImpl(_remoteDataSource);
 SearchRepository _searchRepository = SearchRepositoryImpl(_remoteDataSource);
+TopRatedRepository _topRatedRepository =
+    TopRatedRepositoryImpl(_remoteDataSource);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,10 +29,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          BookCubit(_bookRepository, _genresRepository, _searchRepository)
-            ..loadBooks()
-            ..loadGenres(),
+      create: (context) => BookCubit(_bookRepository, _genresRepository,
+          _searchRepository, _topRatedRepository)
+        ..loadBooks()
+        ..loadGenres()
+        ..loadTopRated(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
