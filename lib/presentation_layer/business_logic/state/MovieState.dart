@@ -1,7 +1,4 @@
-import 'package:bookly/data/model/book_model.dart';
-
-import '../../../data/model/genre_model.dart';
-import '../../../data/model/searchModel.dart';
+import 'package:bookly/data/model/book_mchModel.dart';
 
 abstract class BookState {}
 
@@ -19,20 +16,12 @@ class GetBooksErrorState extends BookState {}
 
 class GetGenresLoadingState extends BookState {}
 
-class GetGenresSuccessState extends BookState {
-  final List<GenreModel> genreModel;
-
-  GetGenresSuccessState(this.genreModel);
-}
+class GetGenresSuccessState extends BookState {}
 
 class GetGenresErrorState extends BookState {}
 
 class GetSearchLoadingState extends BookState {}
 
-class GetSearchSuccessState extends BookState {
-  final List<SearchModel> searchModel;
-
-  GetSearchSuccessState(this.searchModel);
-}
+class GetSearchSuccessState extends BookState {}
 
 class GetSearchErrorState extends BookState {}
