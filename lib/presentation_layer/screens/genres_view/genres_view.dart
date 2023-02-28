@@ -4,6 +4,7 @@ import 'package:bookly/presentation_layer/business_logic/state/MovieState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/router/router.dart';
 import '../../../core/utilities/color_constants.dart';
 
 class GenresView extends StatelessWidget {
@@ -19,25 +20,13 @@ class GenresView extends StatelessWidget {
         title: const Text("Genres"),
       ),
       body: BlocConsumer<BookCubit, BookState>(
-        listener: (context, state) {
-          if (state is GetGenresLoadingState) {
-            const Center(
-              child: CircularProgressIndicator(
-                color: Colors.white,
-              ),
-            );
-          }
-          if (state is GetSearchErrorState) {
-            const Center(
-              child: Text("No Data Found!"),
-            );
-          }
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           var cubit = BookCubit.get(context);
           debugPrint("$state");
           return GenresListView(
             model: cubit.genreModel,
+            cubit: cubit,
           );
         },
       ),
@@ -46,9 +35,11 @@ class GenresView extends StatelessWidget {
 }
 
 class GenresListView extends StatelessWidget {
-  const GenresListView({Key? key, required this.model}) : super(key: key);
+  const GenresListView({Key? key, required this.model, required this.cubit})
+      : super(key: key);
 
   final List<GenreModel>? model;
+  final BookCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +53,8 @@ class GenresListView extends StatelessWidget {
             title: Text("${genre.name}"),
             trailing: InkWell(
               onTap: () {
-                //  Navigator.pushNamed(ctx, Routes.kBooksByGenreViewRoute);
+                Navigator.pushNamed(context, Routes.kBooksByGenreViewRoute,
+                    arguments: genre.name);
               },
               child: const Icon(
                 Icons.arrow_forward_ios_rounded,

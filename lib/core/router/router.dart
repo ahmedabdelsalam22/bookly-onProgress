@@ -39,7 +39,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const GenresView());
 
       case Routes.kBooksByGenreViewRoute:
-        return MaterialPageRoute(builder: (_) => const BooksByGenreView());
+        return MaterialPageRoute(
+          builder: (_) =>
+              BooksByGenreView(genreName: settings.arguments.toString()),
+        );
 
       default:
         return MaterialPageRoute(builder: (_) => const SplashView());
