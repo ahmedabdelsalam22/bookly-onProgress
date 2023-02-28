@@ -1,6 +1,8 @@
+import 'package:bookly/data/model/books_by_genres_model.dart';
 import 'package:bookly/data/model/genre_model.dart';
 import 'package:bookly/data/model/top_rated_model.dart';
 import 'package:bookly/domain/repository/book_repository.dart';
+import 'package:bookly/domain/repository/books_by_genre_repository.dart';
 import 'package:bookly/domain/repository/genres_repository.dart';
 import 'package:bookly/domain/repository/searchRepository.dart';
 import 'package:bookly/domain/repository/top_rated_repository.dart';
@@ -12,14 +14,19 @@ import '../../../data/model/searchModel.dart';
 import '../state/MovieState.dart';
 
 class BookCubit extends Cubit<BookState> {
-  BookCubit(this._bookRepository, this._genresRepository,
-      this._searchRepository, this._topRatedRepository)
+  BookCubit(
+      this._bookRepository,
+      this._genresRepository,
+      this._searchRepository,
+      this._topRatedRepository,
+      this._booksByGenreRepository)
       : super(BookInitial());
 
   final BookRepository _bookRepository;
   final GenresRepository _genresRepository;
   final SearchRepository _searchRepository;
   final TopRatedRepository _topRatedRepository;
+  final BooksByGenreRepository _booksByGenreRepository;
 
   static BookCubit get(context) => BlocProvider.of(context);
 
@@ -76,6 +83,20 @@ class BookCubit extends Cubit<BookState> {
     }).catchError((onError) {
       emit(GetTopRatedErrorState());
       debugPrint("top rated not found $onError");
+    });
+  }
+
+  List<BooksByGenresModel>? booksByGenresModel;
+
+  void loadBooksByGenre(String genreName) {
+    emit(BooksByGenreLoadingState());
+    _booksByGenreRepository.getBooksByGenre(genreName).then((value) {
+      emit(BooksByGenreSuccessState());
+      booksByGenresModel = value;
+      debugPrint("load BooksByGenre");
+    }).catchError((onError) {
+      emit(BooksByGenreErrorState());
+      debugPrint("BooksByGenre not found $onError");
     });
   }
 }
