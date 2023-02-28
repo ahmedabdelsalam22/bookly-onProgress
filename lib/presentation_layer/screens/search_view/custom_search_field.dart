@@ -19,7 +19,9 @@ class CustomSearchTextField extends StatelessWidget {
         hintText: 'Search',
         hintStyle: const TextStyle(color: Colors.white),
         suffixIcon: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            //  cubit.searchInBooks(value);
+          },
           icon: const Opacity(
             opacity: .8,
             child: Icon(

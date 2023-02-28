@@ -43,7 +43,7 @@ class BookCubit extends Cubit<BookState> {
     });
   }
 
-  List<SearchModel>? searchModel;
+  List<SearchModel>? searchModel = [];
   void searchInBooks(String text) {
     emit(GetSearchLoadingState());
     _searchRepository.searchInBooks(text).then((value) {
