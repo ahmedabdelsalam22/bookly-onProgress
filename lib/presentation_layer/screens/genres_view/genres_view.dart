@@ -1,3 +1,4 @@
+import 'package:bookly/data/model/genre_model.dart';
 import 'package:bookly/presentation_layer/business_logic/cubit/book_cubit.dart';
 import 'package:bookly/presentation_layer/business_logic/state/MovieState.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +21,11 @@ class GenresView extends StatelessWidget {
       body: BlocConsumer<BookCubit, BookState>(
         listener: (context, state) {},
         builder: (context, state) {
+          var cubit = BookCubit.get(context);
           debugPrint("$state");
-          if (state is GetGenresSuccessState) {
-            return GenresListView(
-              state: state,
-            );
-          }
-          return const SizedBox();
+          return GenresListView(
+            model: cubit.genreModel,
+          );
         },
       ),
     );
@@ -34,21 +33,20 @@ class GenresView extends StatelessWidget {
 }
 
 class GenresListView extends StatelessWidget {
-  const GenresListView({Key? key, required this.state}) : super(key: key);
+  const GenresListView({Key? key, required this.model}) : super(key: key);
 
-  final GetGenresSuccessState state;
+  final List<GenreModel>? model;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      // itemCount: state.genreModel.length,
-      itemCount: 5,
+      itemCount: model!.length,
       itemBuilder: (context, index) {
+        var genre = model![index];
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
           child: ListTile(
-            //  title: Text("${state.genreModel[index].name}"),
-            title: Text("title"),
+            title: Text("${genre.name}"),
             trailing: InkWell(
               onTap: () {
                 //  Navigator.pushNamed(ctx, Routes.kBooksByGenreViewRoute);

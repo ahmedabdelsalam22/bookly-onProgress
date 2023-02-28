@@ -1,9 +1,11 @@
+import 'package:bookly/data/model/genre_model.dart';
 import 'package:bookly/domain/repository/book_repository.dart';
 import 'package:bookly/domain/repository/genres_repository.dart';
 import 'package:bookly/domain/repository/searchRepository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../data/model/searchModel.dart';
 import '../state/MovieState.dart';
 
 class BookCubit extends Cubit<BookState> {
@@ -28,10 +30,12 @@ class BookCubit extends Cubit<BookState> {
     });
   }
 
+  List<GenreModel>? genreModel;
   void loadGenres() {
     emit(GetGenresLoadingState());
     _genresRepository.getAllGenres().then((value) {
       emit(GetGenresSuccessState(value));
+      genreModel = value;
       debugPrint("Genres loaded");
     }).catchError((onError) {
       emit(GetGenresErrorState());
@@ -39,6 +43,7 @@ class BookCubit extends Cubit<BookState> {
     });
   }
 
+  List<SearchModel>? searchModel;
   void searchInBooks(String text) {
     emit(GetSearchLoadingState());
     _searchRepository.searchInBooks(text).then((value) {
