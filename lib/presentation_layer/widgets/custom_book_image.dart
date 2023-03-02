@@ -14,7 +14,10 @@ class CustomBookImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, Routes.kBookDetailsViewRoute);
+        Navigator.pushNamed(
+          context,
+          Routes.kBookDetailsViewRoute,
+        );
       },
       child: AspectRatio(
         aspectRatio: 2.7 / 4,

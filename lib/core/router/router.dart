@@ -27,7 +27,7 @@ class AppRouter {
         );
 
       case Routes.kBookDetailsViewRoute:
-        return MaterialPageRoute(builder: (_) => const BookDetailsView());
+        return MaterialPageRoute(builder: (_) => BookDetailsView());
 
       case Routes.kSearchViewRoute:
         return MaterialPageRoute(builder: (_) => const SearchView());
