@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/utilities/color_constants.dart';
-import '../home_view/top_rated/list_view_book_item.dart';
+import '../../widgets/list_view_book_item.dart';
 
 class BooksByGenreView extends StatelessWidget {
   const BooksByGenreView({Key? key, required this.genreName}) : super(key: key);
@@ -40,7 +40,6 @@ class BooksByGenreView extends StatelessWidget {
                   price: model.price!.toInt(),
                   reviewNumbers: model.reviewersNumbers!.toInt(),
                   rate: model.rate!.toDouble(),
-                  bookModel: cubit.bookModel![index],
                 ),
               );
             },

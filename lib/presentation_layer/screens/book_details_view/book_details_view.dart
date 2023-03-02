@@ -1,3 +1,4 @@
+import 'package:bookly/data/model/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,7 +11,9 @@ import '../../widgets/widget_rating.dart';
 import 'custom_book_details_app_bar.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key});
+  const BookDetailsView({super.key, required this.bookModel});
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class BookDetailsView extends StatelessWidget {
         // TODO: implement listener
       },
       builder: (context, state) {
-        var cubit = BookCubit.get(context);
+        //  var cubit = BookCubit.get(context);
         return Scaffold(
           backgroundColor: ColorConstants.kPrimaryColor,
           body: SafeArea(
@@ -36,7 +39,7 @@ class BookDetailsView extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: width * 0.25),
-                      child: CustomBookImage(
+                      child: const CustomBookImage(
                         url: '',
                       ),
                     ),
@@ -44,7 +47,7 @@ class BookDetailsView extends StatelessWidget {
                       height: 43,
                     ),
                     Text(
-                      'title',
+                      '${bookModel.title}',
                       style: AppTextStyles.textStyle30.copyWith(
                           fontFamily: 'sectra', fontWeight: FontWeight.w700),
                     ),
@@ -54,7 +57,7 @@ class BookDetailsView extends StatelessWidget {
                     Opacity(
                       opacity: .7,
                       child: Text(
-                        'genreName',
+                        '${bookModel.genreName}',
                         style: AppTextStyles.textStyle18.copyWith(
                             fontWeight: FontWeight.w500,
                             fontStyle: FontStyle.italic),
@@ -63,9 +66,9 @@ class BookDetailsView extends StatelessWidget {
                     const SizedBox(
                       height: 18,
                     ),
-                    const BookRating(
-                      rate: 4.5,
-                      reviewersNumbers: 2500,
+                    BookRating(
+                      rate: bookModel.rate!.toDouble(),
+                      reviewersNumbers: bookModel.reviewersNumbers!.toInt(),
                     ),
                     const SizedBox(
                       height: 25,
@@ -77,7 +80,7 @@ class BookDetailsView extends StatelessWidget {
                     Align(
                       alignment: AlignmentDirectional.topStart,
                       child: Text(
-                        'quotes',
+                        '${bookModel.quote}',
                         style: AppTextStyles.textStyle14
                             .copyWith(fontWeight: FontWeight.w600),
                         maxLines: 3,
