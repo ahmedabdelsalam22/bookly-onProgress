@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/router/router.dart';
-
 class CustomBookImage extends StatelessWidget {
   const CustomBookImage({
     super.key,
@@ -14,10 +12,10 @@ class CustomBookImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(
+        /* Navigator.pushNamed(
           context,
           Routes.kBookDetailsViewRoute,
-        );
+        );*/
       },
       child: AspectRatio(
         aspectRatio: 2.7 / 4,

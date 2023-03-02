@@ -1,3 +1,4 @@
+import 'package:bookly/data/model/book_model.dart';
 import 'package:bookly/presentation_layer/screens/books_by_genre_view/books_by_genre_view.dart';
 import 'package:bookly/presentation_layer/screens/genres_view/genres_view.dart';
 import 'package:bookly/presentation_layer/screens/see_all_view/see_all_view.dart';
@@ -27,7 +28,10 @@ class AppRouter {
         );
 
       case Routes.kBookDetailsViewRoute:
-        return MaterialPageRoute(builder: (_) => BookDetailsView());
+        return MaterialPageRoute(
+            builder: (_) => BookDetailsView(
+                  bookModel: settings.arguments as BookModel,
+                ));
 
       case Routes.kSearchViewRoute:
         return MaterialPageRoute(builder: (_) => const SearchView());

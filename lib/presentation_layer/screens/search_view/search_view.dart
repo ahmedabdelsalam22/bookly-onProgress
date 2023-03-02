@@ -6,7 +6,7 @@ import '../../../core/utilities/color_constants.dart';
 import '../../../core/utilities/text_styles.dart';
 import '../../business_logic/cubit/book_cubit.dart';
 import '../../business_logic/state/MovieState.dart';
-import '../home_view/top_rated/list_view_book_item.dart';
+import '../../widgets/list_view_book_item.dart';
 import 'custom_search_field.dart';
 
 class SearchView extends StatelessWidget {

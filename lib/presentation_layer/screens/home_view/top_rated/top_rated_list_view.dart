@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../data/model/top_rated_model.dart';
-import 'list_view_book_item.dart';
+import '../../../widgets/list_view_book_item.dart';
 
 class TopRatedListView extends StatelessWidget {
   const TopRatedListView({Key? key, required this.topRatedModel})
@@ -18,15 +18,23 @@ class TopRatedListView extends StatelessWidget {
         itemBuilder: (context, index) {
           var model = topRatedModel![index];
 
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-            child: ListViewBookItem(
-              title: '${model.title}',
-              description: '${model.description}',
-              genreName: '${model.genreName}',
-              price: model.price!.toInt(),
-              reviewNumbers: model.reviewersNumbers!.toInt(),
-              rate: model.rate!.toDouble(),
+          return InkWell(
+            onTap: () {
+              /*    Navigator.pushNamed(
+                context,
+                Routes.kBookDetailsViewRoute,
+              );*/
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              child: ListViewBookItem(
+                title: '${model.title}',
+                description: '${model.description}',
+                genreName: '${model.genreName}',
+                price: model.price!.toInt(),
+                reviewNumbers: model.reviewersNumbers!.toInt(),
+                rate: model.rate!.toDouble(),
+              ),
             ),
           );
         },

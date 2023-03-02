@@ -7,8 +7,8 @@ import '../../../core/router/router.dart';
 import '../../../core/utilities/color_constants.dart';
 import '../../../core/utilities/text_styles.dart';
 import '../../business_logic/cubit/book_cubit.dart';
-import '../../widgets/books_list_view.dart';
 import '../../widgets/home_app_bar.dart';
+import '../../widgets/home_swiper.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -17,56 +17,46 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstants.kPrimaryColor,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const HomeAppBar(),
-          BlocConsumer<BookCubit, BookState>(
-            listener: (context, state) {
-              // TODO: implement listener
-            },
-            builder: (context, state) {
-              var cubit = BookCubit.get(context);
-              return BooksListView(
-                height: MediaQuery.of(context).size.height * .3,
-                cubit: cubit,
-              );
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'TopRated',
-                  style: AppTextStyles.textStyle18,
+      body: BlocConsumer<BookCubit, BookState>(
+        listener: (context, state) {
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          var cubit = BookCubit.get(context);
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const HomeAppBar(),
+              const HomeSwiper(),
+              Padding(
+                padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Books',
+                      style: AppTextStyles.textStyle18,
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.kSeeAllViewRoute);
+                      },
+                      child: Text(
+                        'See All',
+                        style: AppTextStyles.textStyle18
+                            .copyWith(color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, Routes.kSeeAllViewRoute);
-                  },
-                  child: Text(
-                    'See All',
-                    style:
-                        AppTextStyles.textStyle18.copyWith(color: Colors.white),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          BlocConsumer<BookCubit, BookState>(
-            listener: (context, state) {
-              // TODO: implement listener
-            },
-            builder: (context, state) {
-              var cubit = BookCubit.get(context);
-              return TopRatedListView(
+              ),
+              TopRatedListView(
                 topRatedModel: cubit.topRatedModel,
-              );
-            },
-          ),
-        ],
+              ),
+            ],
+          );
+        },
       ),
     );
   }
