@@ -29,6 +29,7 @@ class BooksByGenreView extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
               var model = cubit.booksByGenresModel![index];
+
               return Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -39,6 +40,7 @@ class BooksByGenreView extends StatelessWidget {
                   price: model.price!.toInt(),
                   reviewNumbers: model.reviewersNumbers!.toInt(),
                   rate: model.rate!.toDouble(),
+                  bookModel: cubit.bookModel![index],
                 ),
               );
             },

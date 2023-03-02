@@ -3,28 +3,35 @@ import 'package:flutter/material.dart';
 import '../../../../core/router/router.dart';
 import '../../../../core/utilities/assets_paths.dart';
 import '../../../../core/utilities/text_styles.dart';
+import '../../../../data/model/book_model.dart';
 import '../../../widgets/widget_rating.dart';
 
 class ListViewBookItem extends StatelessWidget {
-  const ListViewBookItem(
-      {Key? key,
-      required this.title,
-      required this.description,
-      required this.genreName,
-      required this.price,
-      required this.reviewNumbers,
-      required this.rate})
-      : super(key: key);
+  const ListViewBookItem({
+    Key? key,
+    required this.title,
+    required this.description,
+    required this.genreName,
+    required this.price,
+    required this.reviewNumbers,
+    required this.rate,
+    this.bookModel,
+  }) : super(key: key);
 
   final String title, description, genreName;
   final int price, reviewNumbers;
   final double rate;
+  final BookModel? bookModel;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, Routes.kBookDetailsViewRoute);
+        Navigator.pushNamed(
+          context,
+          Routes.kBookDetailsViewRoute,
+          arguments: bookModel,
+        );
       },
       child: SizedBox(
         height: 150,
