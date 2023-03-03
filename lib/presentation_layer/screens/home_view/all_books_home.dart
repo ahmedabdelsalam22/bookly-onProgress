@@ -1,11 +1,11 @@
 import 'package:bookly/presentation_layer/business_logic/cubit/book_cubit.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/router/router.dart';
-import 'list_view_book_item.dart';
+import '../../../core/router/router.dart';
+import 'home_list_item.dart';
 
-class AllBooksView extends StatelessWidget {
-  const AllBooksView({
+class AllBooksHome extends StatelessWidget {
+  const AllBooksHome({
     Key? key,
     required this.cubit,
   }) : super(key: key);
@@ -15,6 +15,7 @@ class AllBooksView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) {
         var book = cubit.bookModel![index];
@@ -25,7 +26,7 @@ class AllBooksView extends StatelessWidget {
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            child: ListViewBookItem(
+            child: HomeViewListItem(
               title: '${book.title}',
               description: '${book.description}',
               genreName: '${book.genreName}',

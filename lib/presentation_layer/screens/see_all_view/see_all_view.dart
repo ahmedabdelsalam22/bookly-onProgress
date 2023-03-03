@@ -22,8 +22,7 @@ class SeeAllView extends StatelessWidget {
           style: AppTextStyles.textStyle18.copyWith(color: Colors.white),
         ),
       ),
-      body: AllBooks(
-        axis: Axis.vertical,
+      body: AllBooksView(
         cubit: cubit,
       ),
     );
