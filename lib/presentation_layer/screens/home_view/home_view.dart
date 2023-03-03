@@ -1,4 +1,4 @@
-import 'package:bookly/presentation_layer/business_logic/state/MovieState.dart';
+import 'package:bookly/presentation_layer/business_logic/state/BookState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -6,9 +6,9 @@ import '../../../core/router/router.dart';
 import '../../../core/utilities/color_constants.dart';
 import '../../../core/utilities/text_styles.dart';
 import '../../business_logic/cubit/book_cubit.dart';
+import '../../widgets/all_books.dart';
 import '../../widgets/home_app_bar.dart';
 import '../../widgets/home_swiper.dart';
-import 'all_books_home.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -19,7 +19,13 @@ class HomeView extends StatelessWidget {
       backgroundColor: ColorConstants.kPrimaryColor,
       body: BlocConsumer<BookCubit, BookState>(
         listener: (context, state) {
-          // TODO: implement listener
+          if (state is GetBooksLoadingState) {
+            const Center(
+              child: CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            );
+          }
         },
         builder: (context, state) {
           var cubit = BookCubit.get(context);
@@ -39,8 +45,11 @@ class HomeView extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, Routes.kSeeAllViewRoute,
-                            arguments: cubit);
+                        Navigator.pushNamed(
+                          context,
+                          Routes.kSeeAllViewRoute,
+                          arguments: cubit,
+                        );
                       },
                       child: Text(
                         'See All',
@@ -51,9 +60,16 @@ class HomeView extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.3,
-                child: AllBooksHome(
+              if (state is GetBooksErrorState)
+                const Expanded(
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              Expanded(
+                child: AllBooksView(
                   cubit: cubit,
                 ),
               ),
