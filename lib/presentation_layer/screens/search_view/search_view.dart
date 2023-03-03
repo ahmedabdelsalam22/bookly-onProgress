@@ -47,12 +47,12 @@ class SearchView extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    if (state is GetSearchSuccessState)
+                    /* if (state is GetSearchSuccessState)
                       Expanded(
                         child: SearchResultListView(
                           searchModel: cubit.searchModel,
                         ),
-                      ),
+                      ),*/
                   ],
                 );
               },
