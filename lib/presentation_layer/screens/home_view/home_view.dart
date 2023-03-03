@@ -51,6 +51,13 @@ class HomeView extends StatelessWidget {
                   ],
                 ),
               ),
+              if (state is GetTopRatedLoadingState)
+                const Expanded(
+                    child: Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                  ),
+                )),
               TopRatedListView(
                 topRatedModel: cubit.topRatedModel,
               ),
