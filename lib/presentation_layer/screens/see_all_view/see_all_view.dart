@@ -27,6 +27,13 @@ class SeeAllView extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           var cubit = BookCubit.get(context);
+          if (state is GetBooksLoadingState) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            );
+          }
           return ListView.builder(
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
