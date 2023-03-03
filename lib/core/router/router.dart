@@ -1,4 +1,5 @@
 import 'package:bookly/data/model/book_model.dart';
+import 'package:bookly/presentation_layer/business_logic/cubit/book_cubit.dart';
 import 'package:bookly/presentation_layer/screens/books_by_genre_view/books_by_genre_view.dart';
 import 'package:bookly/presentation_layer/screens/genres_view/genres_view.dart';
 import 'package:bookly/presentation_layer/screens/see_all_view/see_all_view.dart';
@@ -37,7 +38,11 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SearchView());
 
       case Routes.kSeeAllViewRoute:
-        return MaterialPageRoute(builder: (_) => const SeeAllView());
+        var cubit = settings.arguments as BookCubit;
+        return MaterialPageRoute(
+            builder: (_) => SeeAllView(
+                  cubit: cubit,
+                ));
 
       case Routes.kGenresViewRoute:
         return MaterialPageRoute(builder: (_) => const GenresView());

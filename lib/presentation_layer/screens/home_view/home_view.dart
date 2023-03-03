@@ -1,5 +1,4 @@
 import 'package:bookly/presentation_layer/business_logic/state/MovieState.dart';
-import 'package:bookly/presentation_layer/screens/home_view/top_rated/top_rated_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,6 +6,7 @@ import '../../../core/router/router.dart';
 import '../../../core/utilities/color_constants.dart';
 import '../../../core/utilities/text_styles.dart';
 import '../../business_logic/cubit/book_cubit.dart';
+import '../../widgets/all_books.dart';
 import '../../widgets/home_app_bar.dart';
 import '../../widgets/home_swiper.dart';
 
@@ -23,7 +23,6 @@ class HomeView extends StatelessWidget {
         },
         builder: (context, state) {
           var cubit = BookCubit.get(context);
-
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -40,7 +39,8 @@ class HomeView extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, Routes.kSeeAllViewRoute);
+                        Navigator.pushNamed(context, Routes.kSeeAllViewRoute,
+                            arguments: cubit);
                       },
                       child: Text(
                         'See All',
@@ -51,15 +51,12 @@ class HomeView extends StatelessWidget {
                   ],
                 ),
               ),
-              if (state is GetTopRatedLoadingState)
-                const Expanded(
-                    child: Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
-                  ),
-                )),
-              TopRatedListView(
-                topRatedModel: cubit.topRatedModel,
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.33,
+                child: AllBooks(
+                  axis: Axis.horizontal,
+                  cubit: cubit,
+                ),
               ),
             ],
           );
