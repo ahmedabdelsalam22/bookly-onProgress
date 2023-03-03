@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/utilities/color_constants.dart';
 import '../../../core/utilities/text_styles.dart';
 import '../../business_logic/cubit/book_cubit.dart';
-import '../../business_logic/state/MovieState.dart';
+import '../../business_logic/state/BookState.dart';
 import '../../widgets/custom_book_image.dart';
 import '../../widgets/widget_rating.dart';
 import 'custom_book_details_app_bar.dart';

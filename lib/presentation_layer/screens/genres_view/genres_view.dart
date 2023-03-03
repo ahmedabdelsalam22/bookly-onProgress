@@ -1,6 +1,6 @@
 import 'package:bookly/data/model/genre_model.dart';
 import 'package:bookly/presentation_layer/business_logic/cubit/book_cubit.dart';
-import 'package:bookly/presentation_layer/business_logic/state/MovieState.dart';
+import 'package:bookly/presentation_layer/business_logic/state/BookState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

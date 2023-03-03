@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/model/book_model.dart';
-import '../state/MovieState.dart';
+import '../state/BookState.dart';
 
 class BookCubit extends Cubit<BookState> {
   BookCubit(this._bookRepository, this._genresRepository,
