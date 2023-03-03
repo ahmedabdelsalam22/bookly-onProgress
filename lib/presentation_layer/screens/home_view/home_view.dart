@@ -6,9 +6,9 @@ import '../../../core/router/router.dart';
 import '../../../core/utilities/color_constants.dart';
 import '../../../core/utilities/text_styles.dart';
 import '../../business_logic/cubit/book_cubit.dart';
-import '../../widgets/all_books.dart';
 import '../../widgets/home_app_bar.dart';
 import '../../widgets/home_swiper.dart';
+import 'all_books_home.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -52,9 +52,8 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.33,
-                child: AllBooks(
-                  axis: Axis.horizontal,
+                height: MediaQuery.of(context).size.height * 0.3,
+                child: AllBooksHome(
                   cubit: cubit,
                 ),
               ),
